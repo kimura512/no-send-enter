@@ -1,0 +1,12 @@
+node_modules/
+out/
+dist/
+.vscode-test/
+*.vsix
+.DS_Store
+coverage/
+*.js
+*.js.map
+*.d.ts
+!jest.config.js
+!.eslintrc.js

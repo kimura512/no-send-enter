@@ -1,0 +1,105 @@
+{
+  "name": "no-send-enter",
+  "displayName": "No-Send-Enter",
+  "description": "Swap Enter and Ctrl/Cmd+Enter behavior in AI chat inputs: Enter inserts newline, Ctrl/Cmd+Enter sends message",
+  "version": "0.1.0",
+  "publisher": "no-send-enter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/no-send-enter/no-send-enter"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "No-Send-Enter",
+      "properties": {
+        "noSendEnter.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable the Enter-to-newline swap logic."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "noSendEnter.send",
+        "title": "No-Send-Enter: Send Message"
+      },
+      {
+        "command": "noSendEnter.newline",
+        "title": "No-Send-Enter: Insert Newline"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "enter",
+        "command": "noSendEnter.newline",
+        "when": "inChatInput && config.noSendEnter.enabled"
+      },
+      {
+        "key": "enter",
+        "command": "noSendEnter.newline",
+        "when": "interactiveEditorFocused && config.noSendEnter.enabled"
+      },
+      {
+        "key": "enter",
+        "command": "noSendEnter.newline",
+        "when": "cursorChatFocus && config.noSendEnter.enabled"
+      },
+      {
+        "key": "enter",
+        "command": "noSendEnter.newline",
+        "when": "webviewFocus && config.noSendEnter.enabled"
+      },
+      {
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "command": "noSendEnter.send",
+        "when": "inChatInput && config.noSendEnter.enabled"
+      },
+      {
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "command": "noSendEnter.send",
+        "when": "interactiveEditorFocused && config.noSendEnter.enabled"
+      },
+      {
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "command": "noSendEnter.send",
+        "when": "cursorChatFocus && config.noSendEnter.enabled"
+      },
+      {
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "command": "noSendEnter.send",
+        "when": "webviewFocus && config.noSendEnter.enabled"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "jest --coverage",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.22.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.3.0"
+  }
+}
