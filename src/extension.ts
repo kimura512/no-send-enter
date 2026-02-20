@@ -17,8 +17,8 @@ export function activate(context: vscode.ExtensionContext): void {
             return;
         }
         return Promise.allSettled([
-            vscode.commands.executeCommand('workbench.action.chat.send'),
-            vscode.commands.executeCommand('chat.action.submit'),
+            vscode.commands.executeCommand('workbench.action.chat.submit'),
+            vscode.commands.executeCommand('aichat.sendMessage'),
         ]);
     });
 

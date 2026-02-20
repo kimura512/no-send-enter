@@ -36,8 +36,8 @@ flowchart TD
 
     H --> J["executeCommand('type', {text: '\\n'})"]
     I --> K["Promise.allSettled()"]
-    K --> L[workbench.action.chat.send]
-    K --> M[chat.action.submit]
+    K --> L[workbench.action.chat.submit]
+    K --> M[aichat.sendMessage]
 ```
 
 ## 二層の有効/無効チェック
@@ -72,8 +72,8 @@ sequenceDiagram
 
     User->>Ext: Ctrl/Cmd+Enter
     Ext->>Ext: isEnabled() → true
-    Ext->>VS: executeCommand('workbench.action.chat.send')
-    Ext->>VS: executeCommand('chat.action.submit')
+    Ext->>VS: executeCommand('workbench.action.chat.submit')
+    Ext->>VS: executeCommand('aichat.sendMessage')
     Note right of VS: 該当コンテキストの<br/>コマンドのみ実行される
 ```
 
@@ -82,9 +82,10 @@ sequenceDiagram
 | コンテキスト | 対象ツール | Enter → newline | Ctrl/Cmd+Enter → send |
 |---|---|---|---|
 | `inChatInput` | Copilot Chat | ✓ | ✓ |
-| `interactiveEditorFocused` | インラインチャット | ✓ | ✓ |
-| `cursorChatFocus` | Cursor AI Chat | ✓ | ✓ |
-| `webviewFocus` | Antigravity等 | ✓ | ✓ |
+| `inlineChatFocused` | インラインチャット | ✓ | ✓ |
+| `aichatInputFocus` | Cursor AI Chat | ✓ | ✓ |
+
+> **Webviewベースのチャット（Antigravity等）は非対応。** webview内はiframeで独立したDOMを持ち、`type`コマンドが到達できないため、拡張側からのキーバインド制御は技術的に不可能。
 
 ## テスト戦略
 

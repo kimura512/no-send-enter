@@ -15,12 +15,13 @@ GitHub Copilot Chat や Cursor の AIチャットでは、Enter を押すと即�
 
 ## 対応チャット
 
-| チャット | when句コンテキスト |
-|---|---|
-| GitHub Copilot Chat（サイドバー） | `inChatInput` |
-| インラインチャット | `interactiveEditorFocused` |
-| Cursor AI Chat | `cursorChatFocus` |
-| Webviewベース（Antigravity等） | `webviewFocus` |
+| チャット | when句コンテキスト | 送信コマンド |
+|---|---|---|
+| GitHub Copilot Chat（サイドバー） | `inChatInput` | `workbench.action.chat.submit` |
+| インラインチャット | `inlineChatFocused` | `workbench.action.chat.submit` |
+| Cursor AI Chat | `aichatInputFocus` | `aichat.sendMessage` |
+
+> **Note:** Webviewベースのチャット（Antigravity等）は、webview内のiframeが独立したDOMを持つため、VS Code拡張のキーバインドでは制御できません。これらのツールは各拡張機能側での対応が必要です。
 
 ## インストール
 

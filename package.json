@@ -49,17 +49,12 @@
       {
         "key": "enter",
         "command": "noSendEnter.newline",
-        "when": "interactiveEditorFocused && config.noSendEnter.enabled"
+        "when": "inlineChatFocused && config.noSendEnter.enabled"
       },
       {
         "key": "enter",
         "command": "noSendEnter.newline",
-        "when": "cursorChatFocus && config.noSendEnter.enabled"
-      },
-      {
-        "key": "enter",
-        "command": "noSendEnter.newline",
-        "when": "webviewFocus && config.noSendEnter.enabled"
+        "when": "aichatInputFocus && config.noSendEnter.enabled"
       },
       {
         "key": "ctrl+enter",
@@ -71,19 +66,13 @@
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "command": "noSendEnter.send",
-        "when": "interactiveEditorFocused && config.noSendEnter.enabled"
+        "when": "inlineChatFocused && config.noSendEnter.enabled"
       },
       {
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "command": "noSendEnter.send",
-        "when": "cursorChatFocus && config.noSendEnter.enabled"
-      },
-      {
-        "key": "ctrl+enter",
-        "mac": "cmd+enter",
-        "command": "noSendEnter.send",
-        "when": "webviewFocus && config.noSendEnter.enabled"
+        "when": "aichatInputFocus && config.noSendEnter.enabled"
       }
     ]
   },

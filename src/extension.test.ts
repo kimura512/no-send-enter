@@ -106,8 +106,8 @@ describe('No-Send-Enter Extension', () => {
       expect(sendCallback).toBeDefined();
 
       await sendCallback();
-      expect(mockVscode.commands.executeCommand).toHaveBeenCalledWith('workbench.action.chat.send');
-      expect(mockVscode.commands.executeCommand).toHaveBeenCalledWith('chat.action.submit');
+      expect(mockVscode.commands.executeCommand).toHaveBeenCalledWith('workbench.action.chat.submit');
+      expect(mockVscode.commands.executeCommand).toHaveBeenCalledWith('aichat.sendMessage');
     });
 
     it('should not call send commands when disabled', async () => {
