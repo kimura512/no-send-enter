@@ -49,35 +49,41 @@
       {
         "key": "enter",
         "command": "noSendEnter.newline",
-        "when": "inChatInput && config.noSendEnter.enabled"
+        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
+        "priority": 100
       },
       {
         "key": "enter",
         "command": "noSendEnter.newline",
-        "when": "inlineChatFocused && config.noSendEnter.enabled"
+        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
+        "priority": 100
       },
       {
         "key": "enter",
         "command": "noSendEnter.newline",
-        "when": "aichatInputFocus && config.noSendEnter.enabled"
+        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
+        "priority": 100
       },
       {
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "command": "noSendEnter.send",
-        "when": "inChatInput && config.noSendEnter.enabled"
+        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
+        "priority": 100
       },
       {
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "command": "noSendEnter.send",
-        "when": "inlineChatFocused && config.noSendEnter.enabled"
+        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
+        "priority": 100
       },
       {
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "command": "noSendEnter.send",
-        "when": "aichatInputFocus && config.noSendEnter.enabled"
+        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
+        "priority": 100
       }
     ]
   },

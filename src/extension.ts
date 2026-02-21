@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext): void {
         }
         log('newline command executed');
         try {
-            return vscode.commands.executeCommand('type', { text: '\n' });
+            return vscode.commands.executeCommand('default:type', { text: '\n' });
         } catch (error) {
             log(`newline error: ${error}`);
             return Promise.resolve();
