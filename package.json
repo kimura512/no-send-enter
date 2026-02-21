@@ -49,41 +49,15 @@
       {
         "key": "enter",
         "command": "noSendEnter.newline",
-        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
-        "priority": 100
-      },
-      {
-        "key": "enter",
-        "command": "noSendEnter.newline",
-        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
-        "priority": 100
-      },
-      {
-        "key": "enter",
-        "command": "noSendEnter.newline",
-        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
-        "priority": 100
+        "when": "config.noSendEnter.enabled && (antigravity.isAgentModeInputBoxFocused || inChatInput || chatInputFocus || chatFocused || chatInputFocused || isLexicalEditorFocused || focusedView == 'antigravity.agentSidePanelInputBox')",
+        "priority": 9999
       },
       {
         "key": "ctrl+enter",
         "mac": "cmd+enter",
         "command": "noSendEnter.send",
-        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
-        "priority": 100
-      },
-      {
-        "key": "ctrl+enter",
-        "mac": "cmd+enter",
-        "command": "noSendEnter.send",
-        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
-        "priority": 100
-      },
-      {
-        "key": "ctrl+enter",
-        "mac": "cmd+enter",
-        "command": "noSendEnter.send",
-        "when": "(inChatInput || inlineChatFocused || aichatInputFocus || cursorChatInputFocus || aichat.input.focus || composerInputFocus || composer.isEditing || inComposer || editorPromptBarFocused || cursor.chat.active) && config.noSendEnter.enabled",
-        "priority": 100
+        "when": "config.noSendEnter.enabled && (antigravity.isAgentModeInputBoxFocused || inChatInput || chatInputFocus || chatFocused || chatInputFocused || isLexicalEditorFocused || focusedView == 'antigravity.agentSidePanelInputBox')",
+        "priority": 9999
       }
     ]
   },

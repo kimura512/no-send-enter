@@ -33,4 +33,16 @@ const window = {
   createOutputChannel: jest.fn((name: string) => mockOutputChannel),
 };
 
-export { commands, workspace, window, registeredCommands, mockOutputChannel };
+const ExtensionMode = {
+  Production: 1,
+  Development: 2,
+  Test: 3,
+  1: 'Production',
+  2: 'Development',
+  3: 'Test',
+};
+
+const version = '1.80.0';
+
+export { commands, workspace, window, registeredCommands, mockOutputChannel, ExtensionMode, version };
+

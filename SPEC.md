@@ -15,7 +15,7 @@ Visual Studio Code / Cursor / 各種AIチャット拡張機能
 サポート対象チャット
 
 1. GitHub Copilot Chat (サイドバー)
-2. Antigravity AI Chat (および類似のWebviewベースチャット)
+2. Antigravity Agent Chat (サイドパネル) ← メインターゲット
 3. Cursor AI Chat (Cursor Editor内蔵チャット)
    	※ 各ツールの when 句コンテキストを調査し、網羅的に適用する。
 

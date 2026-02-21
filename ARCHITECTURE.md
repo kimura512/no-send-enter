@@ -84,8 +84,9 @@ sequenceDiagram
 | `inChatInput` | Copilot Chat | ✓ | ✓ |
 | `inlineChatFocused` | インラインチャット | ✓ | ✓ |
 | `aichatInputFocus` | Cursor AI Chat | ✓ | ✓ |
+| `antigravity.isAgentModeInputBoxFocused` | Antigravity Agent Chat | ✓ | ✓ |
 
-> **Webviewベースのチャット（Antigravity等）は非対応。** webview内はiframeで独立したDOMを持ち、`type`コマンドが到達できないため、拡張側からのキーバインド制御は技術的に不可能。
+> **現在のターゲット**: Antigravity IDEのAgent Chat入力欄。`antigravity.isAgentModeInputBoxFocused` コンテキストキーを使用してキーバインドを限定する。
 
 ## テスト戦略
 

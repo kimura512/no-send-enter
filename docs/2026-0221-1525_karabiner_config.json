@@ -1,0 +1,68 @@
+{
+    "title": "Antigravity Enter/Cmd+Enter Swap",
+    "rules": [
+        {
+            "description": "Antigravity: Enter to Newline (Shift+Enter), Cmd+Enter to Send (Enter)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "mandatory": [
+                                "command"
+                            ],
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.google\\.antigravity$",
+                                "^com\\.google\\.code-insiders$",
+                                "^com\\.visualstudio\\.code$"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "return_or_enter",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "return_or_enter",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.google\\.antigravity$",
+                                "^com\\.google\\.code-insiders$",
+                                "^com\\.visualstudio\\.code$"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
