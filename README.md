@@ -23,52 +23,6 @@ GitHub Copilot Chat や Cursor の AIチャットでは、Enter を押すと即�
 
 > **Note:** Webviewベースのチャット（Antigravity等）は、webview内のiframeが独立したDOMを持つため、VS Code拡張のキーバインドでは制御できません。これらのツールは各拡張機能側での対応が必要です。
 
-## Cursor (AI Chat / Composer) での利用について
-
-Cursor の AI チャット入力欄は、VS Code 標準のエディタ UI（Monaco Editor）ではなく、独立した Web コンポーネント（Lexical）で実装されています。  
-そのため、本拡張機能を含め **VS Code の Extension API からは Enter キーの入力を横取りして制御することができません**。
-
-Cursor で「Enter で改行、Cmd/Ctrl + Enter で送信」を実現したい場合は、Cursor 自身の `keybindings.json` に手動で以下の設定を追記してください。
-
-1. `Cmd + Shift + P` (Mac) / `Ctrl + Shift + P` (Win) でコマンドパレットを開く
-2. `Preferences: Open Keyboard Shortcuts (JSON)` を選択する
-3. 以下の設定を追加する（既存の配列 `[]` の中にカンマ区切りで追加）
-
-```json
-  {
-    "key": "enter",
-    "command": "type",
-    "args": { "text": "\n" },
-    "when": "composer.isEditing || aichat.input.focus || inComposer || cursorChatInputFocus"
-  },
-  {
-    "key": "cmd+enter",
-    "command": "composer.sendMessage",
-    "when": "composer.isEditing || inComposer",
-    "mac": "cmd+enter"
-  },
-  {
-    "key": "ctrl+enter",
-    "command": "composer.sendMessage",
-    "when": "composer.isEditing || inComposer",
-    "win": "ctrl+enter",
-    "linux": "ctrl+enter"
-  },
-  {
-    "key": "cmd+enter",
-    "command": "aichat.submit",
-    "when": "aichat.input.focus || cursorChatInputFocus",
-    "mac": "cmd+enter"
-  },
-  {
-    "key": "ctrl+enter",
-    "command": "aichat.submit",
-    "when": "aichat.input.focus || cursorChatInputFocus",
-    "win": "ctrl+enter",
-    "linux": "ctrl+enter"
-  }
-```
-
 ## インストール
 
 ### VSIX から（ローカルビルド）

@@ -10,3 +10,5 @@
 | 2026-02-21 13:05 | 保存: 2026-0221-1305_alternative_plan.md - CursorのDOM構造解析結果に基づく代替案作成 |
 | 2026-02-21 13:10 | 実行: README.md に Cursor 用の設定スニペットを追記 |
 | 2026-02-21 13:10 | 保存: 2026-0221-1310_walkthrough.md - 代替案の実施完了サマリ |
+| 2026-02-21 13:21 | 実行: ユーザーの `keybindings.json` (`~/Library/Application Support/Cursor/User/keybindings.json`) を直接編集して回避策を適用 |
+| 2026-02-21 13:24 | 保存: 2026-0221-1324_alternative_plan.md - Cursorのコンテキストキー調査継続 |
