@@ -44,11 +44,15 @@ code --install-extension no-send-enter-0.1.0.vsix
 
 ```json
 {
-  "noSendEnter.enabled": true
+  "noSendEnter.enabled": true,
+  "noSendEnter.debug": false
 }
 ```
 
-`false` にすると拡張機能の全機能が無効化され、デフォルトの挙動に戻る。
+| 設定 | デフォルト | 説明 |
+|---|---|---|
+| `noSendEnter.enabled` | `true` | 拡張機能の有効/無効を切り替えます。`false` にするとデフォルトの挙動（Enter = 送信）に戻ります。 |
+| `noSendEnter.debug` | `false` | デバッグログを有効にします。`true` にすると Output パネルに実行ログが出力されます。 |
 
 ## コマンド
 

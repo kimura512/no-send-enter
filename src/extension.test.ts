@@ -152,6 +152,125 @@ describe('No-Send-Enter Extension', () => {
 
       expect(mockVscode.workspace.getConfiguration).toHaveBeenCalledWith('noSendEnter');
     });
+
+    it('should handle executeCommand throwing error', async () => {
+      mockVscode.workspace.getConfiguration.mockReturnValue({
+        get: jest.fn((key: string) => {
+          if (key === 'enabled') return true;
+          return undefined;
+        }),
+      });
+      mockVscode.commands.executeCommand.mockRejectedValue(new Error('Command failed'));
+
+      activate(mockContext);
+      const sendCallback = mockVscode.registeredCommands.get('noSendEnter.send');
+
+      // Should not throw
+      await expect(sendCallback()).resolves.toBeDefined();
+    });
+  });
+
+  describe('edge cases', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should handle enabled undefined (defaults to true)', async () => {
+      mockVscode.workspace.getConfiguration.mockReturnValue({
+        get: jest.fn((key: string, defaultValue?: any) => {
+          if (key === 'enabled') return defaultValue;
+          return undefined;
+        }),
+      });
+      mockVscode.commands.executeCommand.mockResolvedValue(undefined);
+
+      activate(mockContext);
+      const newlineCallback = mockVscode.registeredCommands.get('noSendEnter.newline');
+
+      await newlineCallback();
+      expect(mockVscode.commands.executeCommand).toHaveBeenCalledWith('type', { text: '\n' });
+    });
+
+    it('should handle multiple consecutive newline calls', async () => {
+      mockVscode.workspace.getConfiguration.mockReturnValue({
+        get: jest.fn(() => true),
+      });
+      mockVscode.commands.executeCommand.mockResolvedValue(undefined);
+
+      activate(mockContext);
+      const newlineCallback = mockVscode.registeredCommands.get('noSendEnter.newline');
+
+      await newlineCallback();
+      await newlineCallback();
+      await newlineCallback();
+
+      expect(mockVscode.commands.executeCommand).toHaveBeenCalledTimes(3);
+    });
+
+    it('should handle Promise.allSettled with mixed results', async () => {
+      mockVscode.workspace.getConfiguration.mockReturnValue({
+        get: jest.fn(() => true),
+      });
+      mockVscode.commands.executeCommand
+        .mockResolvedValueOnce(undefined)
+        .mockRejectedValueOnce(new Error('Failed'));
+
+      activate(mockContext);
+      const sendCallback = mockVscode.registeredCommands.get('noSendEnter.send');
+
+      const result = await sendCallback();
+      expect(result).toBeInstanceOf(Array);
+      expect(result).toHaveLength(2);
+    });
+
+    it('should handle debug config enabled', async () => {
+      mockVscode.mockOutputChannel.appendLine.mockClear();
+      mockVscode.workspace.getConfiguration.mockReturnValue({
+        get: jest.fn((key: string) => {
+          if (key === 'enabled') return true;
+          if (key === 'debug') return true;
+          return undefined;
+        }),
+      });
+      mockVscode.commands.executeCommand.mockResolvedValue(undefined);
+
+      activate(mockContext);
+      const newlineCallback = mockVscode.registeredCommands.get('noSendEnter.newline');
+
+      await newlineCallback();
+
+      expect(mockVscode.mockOutputChannel.appendLine).toHaveBeenCalled();
+    });
+
+    it('should not log when debug disabled', async () => {
+      mockVscode.workspace.getConfiguration.mockReturnValue({
+        get: jest.fn((key: string) => {
+          if (key === 'enabled') return true;
+          if (key === 'debug') return false;
+          return undefined;
+        }),
+      });
+      mockVscode.commands.executeCommand.mockResolvedValue(undefined);
+
+      activate(mockContext);
+      const newlineCallback = mockVscode.registeredCommands.get('noSendEnter.newline');
+
+      await newlineCallback();
+
+      expect(mockVscode.mockOutputChannel.appendLine).not.toHaveBeenCalled();
+    });
+
+    it('should handle getConfiguration throwing error', async () => {
+      mockVscode.workspace.getConfiguration.mockImplementation(() => {
+        throw new Error('Config error');
+      });
+      mockVscode.commands.executeCommand.mockResolvedValue(undefined);
+
+      activate(mockContext);
+      const newlineCallback = mockVscode.registeredCommands.get('noSendEnter.newline');
+
+      await expect(newlineCallback()).resolves.not.toThrow();
+    });
   });
 
   describe('deactivate', () => {

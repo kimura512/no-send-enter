@@ -10,3 +10,10 @@ coverage/
 *.d.ts
 !jest.config.js
 !.eslintrc.js
+.sisyphus/
+.vscodeignore
+.claude/
+.opencode/
+.agent/
+.cursor/
+.gemini/

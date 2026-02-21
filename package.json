@@ -27,6 +27,11 @@
           "type": "boolean",
           "default": true,
           "description": "Enable/Disable the Enter-to-newline swap logic."
+        },
+        "noSendEnter.debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable debug logging to the Output panel."
         }
       }
     },
